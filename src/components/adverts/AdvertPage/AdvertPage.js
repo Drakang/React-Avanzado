@@ -1,14 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
 import AdvertDetail from "./AdvertDetail";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetails, getUi } from "../../../store/selectors";
+import { getDetails, getUIstate } from "../../../store/selectors";
 import { useEffect } from "react";
 import { advertDelete, detailsLoad } from "../../../store/actions";
 
 function AdvertPage() {
   const { advertId } = useParams();
   const navigate = useNavigate();
-  const { isLoading } = useSelector(getUi);
+  const { isLoading } = useSelector(getUIstate);
   const dispatch = useDispatch();
   const advert = useSelector(getDetails(advertId));
 

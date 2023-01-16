@@ -4,7 +4,7 @@ import FiltersForm from "./FiltersForm";
 import AdvertsList from "./AdvertsList";
 import EmptyList from "./EmptyList";
 import storage from "../../../utils/storage";
-import { getStateAdverts, getUi } from "../../../store/selectors";
+import { getStateAdverts, getUIstate } from "../../../store/selectors";
 import { defaultFilters, filterAdverts } from "./filters";
 import { useDispatch, useSelector } from "react-redux";
 import { advertsLoad } from "../../../store/actions";
@@ -15,7 +15,7 @@ const saveFilters = (filters) => storage.set("filters", filters);
 
 function AdvertsPage() {
   const [filters, setFilters] = useState(getFilters);
-  const { isLoading } = useSelector(getUi);
+  const { isLoading } = useSelector(getUIstate);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
