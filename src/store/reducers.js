@@ -1,15 +1,31 @@
 import {
+  AUTH_LOGIN_REQUEST,
   AUTH_LOGIN_SUCCESS,
+  AUTH_LOGIN_FAILURE,
   AUTH_LOGOUT,
   ADVERTS_LOADED_SUCCESS,
   UI_RESET_ERROR,
   DETAILS_LOADED_SUCCESS,
+  TAGS_LOAD_SUCCESS,
+  LOGIN_DATA_SUCCESS,
   ADVERT_CREATED_SUCCESS,
+  ADVERTS_LOADED_FAILURE,
+  ADVERT_DELETE_SUCCESS,
+
+  
+
 } from "./types";
 
 export const defaultState = {
   auth: false,
+  user: {
+    data: "",
+  },
   adverts: {
+    areLoaded: false,
+    data: [],
+  },
+  tags: {
     areLoaded: false,
     data: [],
   },
@@ -30,6 +46,13 @@ export function auth(state = defaultState.auth, action) {
   }
 }
 
+export function user(state = defaultState.user, action) {
+  if (action.type === LOGIN_DATA_SUCCESS) {
+    return { data: action.payload };
+  }
+  return state;
+}
+
 export function adverts(state = defaultState.adverts, action) {
   if (action.type === ADVERTS_LOADED_SUCCESS) {
     return { areLoaded: true, data: action.payload };
@@ -39,6 +62,17 @@ export function adverts(state = defaultState.adverts, action) {
   }
   if (action.type === ADVERT_CREATED_SUCCESS) {
     return { ...state, data: [action.payload, ...state.data] };
+  }
+  if (action.type === ADVERT_DELETE_SUCCESS) {
+    return { ...state, areLoaded: false };
+  };
+
+  return state;
+}
+
+export function tags(state = defaultState.tags, action) {
+  if (action.type === TAGS_LOAD_SUCCESS) {
+    return { areLoaded: true, data: action.payload };
   }
   return state;
 }

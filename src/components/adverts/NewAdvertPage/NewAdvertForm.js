@@ -1,8 +1,8 @@
-import T from "prop-types";
+import T from 'prop-types';
 
-import useForm from "../../../hooks/useForm";
-import { InputFile } from "../../common";
-import SelectTags from "../SelectTags";
+import useForm from '../../../hooks/useForm';
+import { InputFile } from '../../common';
+import SelectTags from '../SelectTags';
 
 const validName = ({ name }) => name;
 const validPrice = ({ price }) =>
@@ -16,7 +16,7 @@ function NewAdvertForm({ onSubmit, isLoading }) {
     handleSubmit,
     validate,
   } = useForm({
-    name: "",
+    name: '',
     sale: true,
     price: 0,
     tags: [],
