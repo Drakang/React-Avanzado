@@ -1,10 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import AdvertDetail from "./AdvertDetail";
-import { deleteAdvert } from "../service";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails, getUi } from "../../../store/selectors";
 import { useEffect } from "react";
-import { detailsLoad } from "../../../store/actions";
+import { advertDelete, detailsLoad } from "../../../store/actions";
 
 function AdvertPage() {
   const { advertId } = useParams();
@@ -14,13 +13,16 @@ function AdvertPage() {
   const advert = useSelector(getDetails(advertId));
 
   useEffect(() => {
-    dispatch(detailsLoad(advertId));
-  }, [advertId, dispatch]);
+    dispatch(detailsLoad(advertId)).catch((error) => {
+      if (error.statusCode === 404) {
+        navigate("404");
+      }
+    });
+  }, [advertId, dispatch, navigate]);
 
-  const handleDelete = () => {
-    deleteAdvert(advertId)
-      .then(() => navigate("/"))
-      .then(() => window.location.reload());
+  const handleDelete = async () => {
+    await dispatch(advertDelete(advertId));
+    navigate("/");
   };
 
   if (isLoading) {

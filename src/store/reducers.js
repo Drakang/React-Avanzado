@@ -1,11 +1,11 @@
-import { 
-  AUTH_LOGIN_SUCCESS, 
-  AUTH_LOGOUT, 
-  ADVERTS_LOADED_SUCCESS, 
+import {
+  AUTH_LOGIN_SUCCESS,
+  AUTH_LOGOUT,
+  ADVERTS_LOADED_SUCCESS,
   UI_RESET_ERROR,
   DETAILS_LOADED_SUCCESS,
-  ADVERT_CREATED_SUCCESS} 
-  from './types';
+  ADVERT_CREATED_SUCCESS,
+} from "./types";
 
 export const defaultState = {
   auth: false,
@@ -15,8 +15,8 @@ export const defaultState = {
   },
   ui: {
     isLoading: false,
-    error: null
-   }
+    error: null,
+  },
 };
 
 export function auth(state = defaultState.auth, action) {
@@ -32,10 +32,10 @@ export function auth(state = defaultState.auth, action) {
 
 export function adverts(state = defaultState.adverts, action) {
   if (action.type === ADVERTS_LOADED_SUCCESS) {
-    return { areLoaded:true, data: action.payload};
+    return { areLoaded: true, data: action.payload };
   }
-  if (action.type === DETAILS_LOADED_SUCCESS){
-    return {...state, data: [action.payload]}
+  if (action.type === DETAILS_LOADED_SUCCESS) {
+    return { ...state, data: [action.payload] };
   }
   if (action.type === ADVERT_CREATED_SUCCESS) {
     return { ...state, data: [action.payload, ...state.data] };
@@ -47,8 +47,8 @@ export function ui(state = defaultState.ui, action) {
   if (action.error) {
     return {
       isLoading: false,
-      error: action.payload
-    }
+      error: action.payload,
+    };
   }
   if (/_REQUEST$/.test(action.type)) {
     return {
