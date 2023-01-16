@@ -1,21 +1,20 @@
-import { Link } from 'react-router-dom';
-import T from 'prop-types';
-import { ConfirmationButton } from '../../common';
-import { useDispatch, useSelector } from 'react-redux';
-import { getIsLogged } from '../../../store/selectors';
-import { authLoginFailure, authLogout } from '../../../store/actions';
+import { Link } from "react-router-dom";
+import T from "prop-types";
+import { ConfirmationButton } from "../../common";
+import { useDispatch, useSelector } from "react-redux";
+import { getIsLogged } from "../../../store/selectors";
+import { authLoginFailure, authLogout } from "../../../store/actions";
 
 const AuthButton = () => {
-  const isLogged = useSelector(getIsLogged)
-  const dispatch = useDispatch()
+  const isLogged = useSelector(getIsLogged);
+  const dispatch = useDispatch();
 
   const handleLogoutConfirm = () => {
     try {
-      dispatch(authLogout())
+      dispatch(authLogout());
     } catch (error) {
-      dispatch(authLoginFailure(error))
+      dispatch(authLoginFailure(error));
     }
-    
   };
 
   return isLogged ? (

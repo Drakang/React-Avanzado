@@ -1,6 +1,6 @@
-import T from 'prop-types';
+import T from "prop-types";
 
-import useForm from '../../../hooks/useForm';
+import useForm from "../../../hooks/useForm";
 
 const validEmail = ({ email }) => email;
 const validPassword = ({ password }) => password;
@@ -12,8 +12,8 @@ function LoginForm({ onSubmit, isLoading }) {
     handleSubmit,
     validate,
   } = useForm({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
     remember: false,
   });
   const { email, password, remember } = credentials;
