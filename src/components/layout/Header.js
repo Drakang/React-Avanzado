@@ -1,16 +1,14 @@
-import { NavLink } from 'react-router-dom';
-import { AuthButton } from '../auth';
+import { NavLink } from "react-router-dom";
+import { AuthButton } from "../auth";
 
-import './Header.css';
+import "./Header.css";
 
-const isSelected = ({ isActive }) => (isActive ? 'selected' : '');
+const isSelected = ({ isActive }) => (isActive ? "selected" : "");
 
 function Header() {
   return (
     <header>
-      <h1>
-      Nodepop React
-      </h1>
+      <h1>Nodepop React</h1>
       <nav>
         <ul>
           <li>

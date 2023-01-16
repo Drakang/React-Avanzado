@@ -1,17 +1,17 @@
-import AdvertPage from './AdvertPage'
-import React from 'react';
-import { render} from '@testing-library/react';
-import { Provider } from 'react-redux';
+import AdvertPage from "./AdvertPage";
+import React from "react";
+import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
 
-describe('AdvertPage', () => {
-  test('snapshot test', () => {
+describe("AdvertPage", () => {
+  test("snapshot test", () => {
     const store = {
       getState: () => ({
         ui: {},
         adverts: {
           tags: [],
           getById: {
-            name: '',
+            name: "",
             sale: true,
             price: 0,
             tags: [],
@@ -20,15 +20,14 @@ describe('AdvertPage', () => {
       }),
       subscribe: () => {},
       dispatch: () => {},
-    }
-    const root= () => 
-    render(
-      <Provider store={store}>
-        <AdvertPage />
-      </Provider>
-    );
+    };
+    const root = () =>
+      render(
+        <Provider store={store}>
+          <AdvertPage />
+        </Provider>
+      );
 
-
-    expect(root).toMatchSnapshot()
-    })
-})
+    expect(root).toMatchSnapshot();
+  });
+});

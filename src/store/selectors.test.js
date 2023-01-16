@@ -1,4 +1,4 @@
-import { getDetails, getIsLogged, getStateTags} from "./selectors";
+import { getDetails, getIsLogged, getStateTags } from "./selectors";
 
 describe("getDetails", () => {
   test("should return a advert by advertId", () => {
